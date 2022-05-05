@@ -12,7 +12,7 @@ public enum FollowsSortEnum {
      */
     FIRST_LETTER,
     /**
-     * 时间
+     * 关注时间
      */
     TIME,
     /**

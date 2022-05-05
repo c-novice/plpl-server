@@ -9,7 +9,7 @@ spring:
     url: jdbc:mysql://rm-bp1rof84mj8521yt20o.mysql.rds.aliyuncs.com:3306/lb2?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
   jpa:
     hibernate:
-      ddl-auto: update  # 第一次建表用create，之后用update
+      ddl-auto: update
 
 
 mybatis-plus:

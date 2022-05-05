@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import plpl.user.service.FollowsService;
 
+import java.util.Map;
+
 /**
  * 关注列表控制器
  *
@@ -31,10 +33,10 @@ public class FollowsController {
      * @param sortType 排序方式
      * @return
      */
-    public Result list(@PathVariable Long page, @PathVariable Long limit, Long userId, FollowsSortEnum sortType) {
+    public Result<?> list(@PathVariable Long page, @PathVariable Long limit, Long userId, FollowsSortEnum sortType) {
         Page<FollowsInfo> pageParam = new Page<>(page, limit);
-
-
+        Page<FollowsInfo> followsInfoPage = followsService.selectPage(pageParam, userId, sortType);
+        return Result.ok(followsInfoPage);
     }
 
     /**
@@ -44,8 +46,16 @@ public class FollowsController {
      * @param followsId 关注目标id
      * @return
      */
-    public Result add(Long userId, Long followsId) {
-
+    public Result<?> add(Long userId, Long followsId) {
+        FollowsInfo followsInfo = new FollowsInfo();
+        followsInfo.setFollowId(followsId);
+        followsInfo.setUserId(userId);
+        Map<String, Object> res = followsService.add(followsInfo);
+        if (res.get("state") == "200") {
+            return Result.ok(res);
+        } else {
+            return Result.fail();
+        }
     }
 
     /**
@@ -55,7 +65,12 @@ public class FollowsController {
      * @param followsId 关注目标id
      * @return
      */
-    public Result delete(Long userId, Long followsId) {
-
+    public Result<?> delete(Long userId, Long followsId) {
+        Map<String, Object> res = followsService.delete(userId, followsId);
+        if (res.get("state") == "200") {
+            return Result.ok(res);
+        } else {
+            return Result.fail();
+        }
     }
 }

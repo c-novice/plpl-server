@@ -2,7 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="plpl.user.mapper.FollowsMapper">
 
-    <select id="list" resultType="com.plpl.common.model.FollowsInfo">
+    <insert id="add">
+        insert into `follws`(`user_id`, `follow_d`)
+        values (#{userId}, #{followId})
+    </insert>
+
+    <delete id="delete">
+        delete
+        from `follows`
+        where `user_id` = #{userId}
+          and `follow_id` = #{followId}
+    </delete>
+
+
+    <select id="selectPageByLetter" resultType="com.plpl.common.model.FollowsInfo">
+        select `user.id`, `user.username`
+        from `follows`
+                 inner join user
+                            on (`follows.user_id` = `user.id`)
+        where `user.id` = #{userId}
+        order by name asc
+    </select>
+
+    <select id="selectPageByFrequent" resultType="com.plpl.common.model.FollowsInfo">
+        select `user.id`, `user.username`
+        from `user2user_interact`
+                 inner join `user`
+                            on (`user2user_interact.to_id` = `user.id`)
+                 inner join `follows`
+                            on (`user.id` = `follows.user_id`)
+        where `user.id` = #{userId}
+        order by `click_counts` desc
+    </select>
+
+    <select id="selectPageByTime" resultType="com.plpl.common.model.FollowsInfo">
+        select `user.id`, `user.username`
+        from `follows`
+                 inner join `user`
+                            on (`follows.user_id` = `user.id`)
+        where `user.id` = #{userId}
+        order by `follows.create_time` desc;
+
+    </select>
+
+    <select id="selectPageByLatest" resultType="com.plpl.common.model.FollowsInfo">
+        select `user.id`, `user.username`
+        from `user2user_interact`
+                 inner join `follows` on (`follows.user_id` = `user2user_interact.to_id`)
+                 inner join `user`
+                            on (`follows.user_id` = `user.id`)
+        where `user.id` = #{userId}
+        order by `user2user_interact.current_time` desc;
     </select>
 
 </mapper>
