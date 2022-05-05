@@ -25,10 +25,10 @@ public class FollowsController {
     /**
      * 分页条件查询
      *
-     * @param page
-     * @param limit
-     * @param userId
-     * @param sortType
+     * @param page     第几页
+     * @param limit    多少条数据
+     * @param userId   用户id
+     * @param sortType 排序方式
      * @return
      */
     public Result list(@PathVariable Long page, @PathVariable Long limit, Long userId, FollowsSortEnum sortType) {
@@ -40,8 +40,8 @@ public class FollowsController {
     /**
      * 关注操作
      *
-     * @param userId
-     * @param followsId
+     * @param userId    用户id
+     * @param followsId 关注目标id
      * @return
      */
     public Result add(Long userId, Long followsId) {
@@ -51,8 +51,8 @@ public class FollowsController {
     /**
      * 取关操作
      *
-     * @param userId
-     * @param followsId
+     * @param userId    用户id
+     * @param followsId 关注目标id
      * @return
      */
     public Result delete(Long userId, Long followsId) {
