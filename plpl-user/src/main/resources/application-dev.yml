@@ -1,0 +1,16 @@
+server:
+  port: 9005
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: lzq
+    password: Lzq2686105
+    url: jdbc:mysql://rm-bp1rof84mj8521yt20o.mysql.rds.aliyuncs.com:3306/lb2?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+  jpa:
+    hibernate:
+      ddl-auto: update  # 第一次建表用create，之后用update
+
+
+mybatis-plus:
+  mapper-locations: mapper/*.xml
