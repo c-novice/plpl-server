@@ -2,7 +2,7 @@ package plpl.user.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FollowsControllerTest {
+class UserToUserControllerTest {
 
     @org.junit.jupiter.api.Test
     void list() {

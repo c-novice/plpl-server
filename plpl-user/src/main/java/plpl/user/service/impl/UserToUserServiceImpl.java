@@ -3,10 +3,10 @@ package plpl.user.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.plpl.common.enums.FollowsSortEnum;
-import com.plpl.common.model.FollowsInfo;
+import com.plpl.common.model.UserToUser;
 import org.springframework.stereotype.Service;
-import plpl.user.mapper.FollowsMapper;
-import plpl.user.service.FollowsService;
+import plpl.user.mapper.UserToUserMapper;
+import plpl.user.service.UserToUserService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,10 +15,10 @@ import java.util.Map;
  * @author lzq
  */
 @Service
-public class FollowsServiceImpl extends ServiceImpl<FollowsMapper, FollowsInfo> implements FollowsService {
+public class UserToUserServiceImpl extends ServiceImpl<UserToUserMapper, UserToUser> implements UserToUserService {
 
     @Override
-    public Page<FollowsInfo> selectPage(Page<FollowsInfo> pageParam, Long userId, FollowsSortEnum sortType) {
+    public Page<UserToUser> selectPage(Page<UserToUser> pageParam, Long userId, FollowsSortEnum sortType) {
         switch (sortType) {
             case FIRST_LETTER:
                 return baseMapper.selectPageByLetter(pageParam, userId);
@@ -32,8 +32,8 @@ public class FollowsServiceImpl extends ServiceImpl<FollowsMapper, FollowsInfo> 
     }
 
     @Override
-    public Map<String, Object> add(FollowsInfo followsInfo) {
-        boolean flag = baseMapper.add(followsInfo);
+    public Map<String, Object> add(UserToUser UserToUser) {
+        boolean flag = baseMapper.add(UserToUser);
         Map<String, Object> res = new HashMap<>();
         if (flag) {
             res.put("state", "200");

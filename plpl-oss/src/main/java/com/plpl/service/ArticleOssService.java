@@ -1,8 +1,8 @@
 package com.plpl.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.plpl.common.model.ArticleInfo;
-import com.plpl.po.VideoAddPO;
+import com.plpl.common.model.Article;
+import com.plpl.vo.VideoAddVO;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -10,12 +10,12 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author lzq
  */
-public interface ArticleOssService extends IService<ArticleInfo> {
+public interface ArticleOssService extends IService<Article> {
     /**
      * 文件上传
      *
      * @param file
      * @return
      */
-    boolean add(MultipartFile video, MultipartFile photo, VideoAddPO videoAddPO);
+    boolean add(MultipartFile video, MultipartFile photo, VideoAddVO videoAddVO);
 }

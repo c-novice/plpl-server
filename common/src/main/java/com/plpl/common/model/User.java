@@ -2,6 +2,7 @@ package com.plpl.common.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -10,10 +11,11 @@ import java.util.Date;
  *
  * @author lzq
  */
+@EqualsAndHashCode(callSuper = true)
 @TableName("user")
 @Data
-public class UserInfo extends BaseEntity {
-    private Integer userPower;
+public class User extends BaseEntity {
+    private Integer power;
     private String username;
     private String password;
     private String avatarUrl;

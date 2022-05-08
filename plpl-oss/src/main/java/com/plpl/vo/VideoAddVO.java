@@ -1,4 +1,4 @@
-package com.plpl.po;
+package com.plpl.vo;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import lombok.Data;
  * @author lzq
  */
 @Data
-public class VideoAddPO {
+public class VideoAddVO {
     private Integer upId;
     private String title;
     private String introduction;

@@ -17,6 +17,8 @@
         <module>plpl-data</module>
         <module>plpl-user</module>
         <module>client</module>
+        <module>plpl-recommend</module>
+        <module>plpl-barrage</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

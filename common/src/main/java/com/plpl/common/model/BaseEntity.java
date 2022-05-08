@@ -15,7 +15,6 @@ import java.util.Date;
 @Data
 @ToString
 public class BaseEntity implements Serializable {
-
     @TableId(type = IdType.ASSIGN_ID)
     private String id;
 
