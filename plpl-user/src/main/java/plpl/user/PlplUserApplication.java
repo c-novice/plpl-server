@@ -1,4 +1,4 @@
-package plpl;
+package plpl.user;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
