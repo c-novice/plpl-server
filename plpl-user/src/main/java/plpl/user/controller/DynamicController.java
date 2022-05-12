@@ -5,6 +5,11 @@ import io.swagger.annotations.ApiModel;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * 动态控制器
+ * <p>
+ * 动态列表的设计整体基于feed流
+ * 大v采取拉，小v采取推
+ *
  * @author lzq
  */
 @RestController
@@ -12,13 +17,21 @@ import org.springframework.web.bind.annotation.*;
 @ApiModel(description = "动态控制器")
 public class DynamicController {
 
-    @PostMapping("/auth/publish")
+    /**
+     * 推送动态，触发时机是用户发布作品
+     *
+     * @param userId
+     * @param workerId
+     * @param workerType
+     * @return
+     */
+    @PostMapping("/inner/publish")
     public Result<?> publish(Long userId, Long workerId, Long workerType) {
 
     }
 
     /**
-     * 删除动态（删除worker时触发，删除redis数据）
+     * 删除动态（删除作品时触发，删除redis数据）
      *
      * @param userId
      * @param workerId
@@ -31,7 +44,7 @@ public class DynamicController {
     }
 
     /**
-     * 获取动态列表
+     * 拉取动态列表
      *
      * @param page
      * @param limit
